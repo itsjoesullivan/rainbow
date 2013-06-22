@@ -18,7 +18,7 @@
  * @preserve @version 1.2
  * @url rainbowco.de
  */
-window['Rainbow'] = (function() {
+var Rainbow = module.exports = (function() {
 
     /**
      * array of replacements to process at the end
@@ -773,22 +773,14 @@ window['Rainbow'] = (function() {
             // otherwise we use whatever node you passed in with an optional
             // callback function as the second parameter
             _highlight(arguments[0], arguments[1]);
-        }
+        },
+
+			/**
+			 * Exposing this
+		   */
+			highlightBlockForLanguage: _highlightBlockForLanguage
     };
-}) ();
+})();
 
-/**
- * adds event listener to start highlighting
- */
-(function() {
-    if (document.addEventListener) {
-        return document.addEventListener('DOMContentLoaded', Rainbow.color, false);
-    }
-    window.attachEvent('onload', Rainbow.color);
-}) ();
+console.log(Rainbow);
 
-// When using Google closure compiler in advanced mode some methods
-// get renamed.  This keeps a public reference to these methods so they can
-// still be referenced from outside this library.
-Rainbow["onHighlight"] = Rainbow.onHighlight;
-Rainbow["addClass"] = Rainbow.addClass;
