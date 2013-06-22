@@ -4,6 +4,7 @@
  * @author Craig Campbell
  * @version 1.0.10
  */
+module.exports = function(Rainbow) {
 Rainbow.extend([
     {
         'matches': {
@@ -57,3 +58,5 @@ Rainbow.extend([
         'pattern': /(function)\s(.*?)(?=\()/g
     }
 ]);
+
+};

@@ -4,6 +4,7 @@
  * @author Craig Campbell
  * @version 1.0.8
  */
+module.exports = function(Rainbow) {
 Rainbow.extend('javascript', [
 
     /**
@@ -106,5 +107,14 @@ Rainbow.extend('javascript', [
     {
         'name': 'entity.function',
         'pattern': /(\w+)(?=:\s{0,}function)/g
-    }
+    },
+
+		/**
+		* Matches the word function... sorry bout this
+		*/
+		{
+			'name': 'function.anonymous',
+			'pattern': /(function)/g
+		}
 ]);
+};

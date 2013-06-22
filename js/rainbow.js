@@ -20,6 +20,7 @@
  */
 var Rainbow = module.exports = (function() {
 
+
     /**
      * array of replacements to process at the end
      *
@@ -246,7 +247,8 @@ var Rainbow = module.exports = (function() {
 				return _wrapCodeInSpan(name,code);
 			} else {
 				if(typeof code[name] === 'undefined') { throw "WTF, name not defined in theme" }
-				return code.name;
+				console.log("Name is:",name, "Code is:", code, "code[name] is:", code[name]);
+				return code[name];
 			}
 
 		}
