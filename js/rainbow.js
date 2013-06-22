@@ -238,6 +238,19 @@ var Rainbow = module.exports = (function() {
         return false;
     }
 
+		/**
+		 * takes a string of code and renders it according to the appropriate method.
+		 */
+		function _wrapCode(name, code) {
+			if(typeof window !== 'undefined') {
+				return _wrapCodeInSpan(name,code);
+			} else {
+				if(typeof code[name] === 'undefined') { throw "WTF, name not defined in theme" }
+				return code.name;
+			}
+
+		}
+
     /**
      * takes a string of code and wraps it in a span tag based on the name
      *
@@ -782,5 +795,4 @@ var Rainbow = module.exports = (function() {
     };
 })();
 
-console.log(Rainbow);
 
