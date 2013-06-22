@@ -344,7 +344,7 @@ var Rainbow = module.exports = (function() {
         var onMatchSuccess = function(replacement) {
                 // if this match has a name then wrap it in a span tag
                 if (pattern['name']) {
-                    replacement = _wrapCodeInSpan(pattern['name'], replacement);
+                    replacement = _wrapCode(pattern['name'], replacement);
                 }
 
                 // console.log('LEVEL', CURRENT_LEVEL, 'replace', match[0], 'with', replacement, 'at position', start_pos, 'to', end_pos);
@@ -437,7 +437,7 @@ var Rainbow = module.exports = (function() {
                      * @param {string|null} match_name
                      */
                     _replaceAndContinue = function(block, replace_block, match_name) {
-                        replacement = _replaceAtPosition(_indexOfGroup(match, group_keys[i]), block, match_name ? _wrapCodeInSpan(match_name, replace_block) : replace_block, replacement);
+                        replacement = _replaceAtPosition(_indexOfGroup(match, group_keys[i]), block, match_name ? _wrapCode(match_name, replace_block) : replace_block, replacement);
                         processNextGroup();
                     };
 
