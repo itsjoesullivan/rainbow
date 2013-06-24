@@ -18,8 +18,11 @@
  * @preserve @version 1.2
  * @url rainbowco.de
  */
+
+
 var Rainbow = module.exports = (function() {
 
+	var rainbow;
 
     /**
      * array of replacements to process at the end
@@ -243,11 +246,13 @@ var Rainbow = module.exports = (function() {
 		 * takes a string of code and renders it according to the appropriate method.
 		 */
 		function _wrapCode(name, code) {
+			if('wrap' in rainbow) {
+				return rainbow.wrap(name,code);
+			}
 			if(typeof window !== 'undefined') {
 				return _wrapCodeInSpan(name,code);
 			} else {
 				if(typeof code[name] === 'undefined') { throw "WTF, name not defined in theme" }
-				console.log("Name is:",name, "Code is:", code, "code[name] is:", code[name]);
 				return code[name];
 			}
 
@@ -726,7 +731,7 @@ var Rainbow = module.exports = (function() {
     /**
      * public methods
      */
-    return {
+    rainbow = {
 
         /**
          * extends the language pattern matches
@@ -795,6 +800,7 @@ var Rainbow = module.exports = (function() {
 		   */
 			highlightBlockForLanguage: _highlightBlockForLanguage
     };
+	return rainbow
 })();
 
 
